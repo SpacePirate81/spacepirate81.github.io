@@ -1,0 +1,55 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Telemetry workbench mock</title>
+<style>
+@font-face{font-family:Bricolage;src:url(fonts/Bricolage.ttf);font-weight:100 900}
+@font-face{font-family:Atkinson;src:url(fonts/Atkinson.ttf)}
+:root,*,svg,svg *{forced-color-adjust:none}
+html,body{margin:0;width:1920px;height:1080px;overflow:hidden}
+body{background:var(--bg);font-family:Atkinson;color:var(--ink)}
+.wall{position:absolute;inset:0;background:var(--bg)}
+.bench{position:absolute;left:0;right:0;bottom:0;height:230px;background:linear-gradient(180deg,#8a5a34,#6e4526 60%,#5b391f)}
+.bench:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(0,0,0,.05) 0 3px,transparent 3px 41px)}
+.cork{position:absolute;left:60px;top:70px;width:420px;height:700px;background:#c49a6c;border:14px solid #7a5230;border-radius:4px;box-shadow:0 8px 18px rgba(0,0,0,.25)}
+.card{position:absolute;width:170px;height:110px;background:#fffdf7;border:1px solid #d8cdb8;box-shadow:0 3px 6px rgba(0,0,0,.25);padding:12px;box-sizing:border-box;font-size:20px;font-weight:700;color:#1E1A17}
+.card small{display:block;font-weight:400;font-size:14px;color:#5a5048;margin-top:6px}
+.pin{position:absolute;top:-8px;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--acc2);box-shadow:0 2px 3px rgba(0,0,0,.4)}
+.card.active{outline:4px solid var(--acc1)}
+.monitor{position:absolute;left:560px;top:70px;width:1000px;height:640px;background:#2b2b2b;border-radius:28px;padding:30px;box-sizing:border-box;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.monitor img{width:940px;height:529px;display:block;border-radius:6px}
+.monitor .knobs{display:flex;gap:22px;margin-top:14px;align-items:center;color:#d9d2c3;font-size:16px;letter-spacing:2px}
+.knob{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#eee,#777);border:2px solid #111}
+.gauge{position:absolute;right:70px;top:90px;width:240px;height:240px}
+.paper{position:absolute;left:1600px;top:380px;width:270px;height:380px;background:#fffdf7;transform:rotate(2deg);box-shadow:0 6px 14px rgba(0,0,0,.25);padding:46px 22px 20px;box-sizing:border-box;font-size:17px;line-height:1.7;color:#1E1A17}
+.paper:before{content:"";position:absolute;top:-14px;left:95px;width:80px;height:34px;background:#9aa0a6;border-radius:6px}
+.paper .line{border-bottom:1px solid #b9c7d8}
+.lever{position:absolute;left:820px;bottom:40px;width:480px;height:120px;background:var(--acc2);color:#fff;border:0;border-radius:14px;font:800 44px Bricolage;letter-spacing:3px;box-shadow:0 8px 0 #3b2414}
+.label{position:absolute;left:560px;top:30px;font:700 22px Atkinson;letter-spacing:5px;color:var(--acc2)}
+.tag{position:absolute;right:30px;bottom:250px;font-size:16px;color:var(--ink);opacity:.7}
+</style></head><body>
+<div class="wall"></div>
+<div class="label">TELEMETRY · MOTION BENCH</div>
+<div class="cork">
+ <div class="card active" style="left:24px;top:30px"><div class="pin"></div>Title card<small>Phase 2</small></div>
+ <div class="card" style="left:214px;top:50px;transform:rotate(-2deg)"><div class="pin"></div>Lower third<small>Phase 3</small></div>
+ <div class="card" style="left:30px;top:200px;transform:rotate(1.5deg)"><div class="pin"></div>Callout<small>Phase 4</small></div>
+ <div class="card" style="left:210px;top:220px"><div class="pin"></div>Transition<small>Phase 5</small></div>
+ <div class="card" style="left:40px;top:380px;transform:rotate(-1deg)"><div class="pin"></div>Countdown<small>Phase 6</small></div>
+ <div class="card" style="left:220px;top:400px;transform:rotate(2deg)"><div class="pin"></div>Orbit line<small>Phase 7</small></div>
+</div>
+<div class="monitor"><img id="frame" alt=""><div class="knobs"><div class="knob"></div>PLAY<div class="knob"></div>SCRUB<span id="fr" style="margin-left:auto"></span></div></div>
+<svg class="gauge" viewBox="0 0 240 240"><circle cx="120" cy="120" r="110" fill="#fffdf7" stroke="#2b2b2b" stroke-width="10"/>
+ <g stroke="#2b2b2b" stroke-width="4">
+ <line x1="120" y1="22" x2="120" y2="40"/><line x1="218" y1="120" x2="200" y2="120"/><line x1="22" y1="120" x2="40" y2="120"/><line x1="51" y1="51" x2="64" y2="64"/><line x1="189" y1="51" x2="176" y2="64"/></g>
+ <line id="needle" x1="120" y1="120" x2="120" y2="40" stroke="var(--acc2)" stroke-width="6" stroke-linecap="round"/>
+ <circle cx="120" cy="120" r="10" fill="#2b2b2b"/><text x="120" y="175" text-anchor="middle" font-family="Atkinson" font-size="18" fill="#1E1A17">FRAME</text></svg>
+<div class="paper"><b style="font-family:Bricolage;font-size:22px">Job sheet</b>
+ <div class="line">Title: Scout Mission Recap</div><div class="line">Kicker: Telemetry · Phase 0</div><div class="line">Format: 16:9</div><div class="line">Length: 3 s</div><div class="line" style="color:#C2371F;font-weight:700">SAMPLE</div></div>
+<div class="bench"></div>
+<button class="lever">PRINT REEL</button>
+<div class="tag" id="tag"></div>
+<script>
+const q=new URLSearchParams(location.search);const P={A:['#F4EFE4','#1E1A17','#2D5BD8','#9A5B12','Drafting Paper'],B:['#EAF0F6','#14213D','#2D5BD8','#A0481A','Blueprint Vellum'],C:['#FAF8F3','#1E1A17','#1F6F78','#C2371F','Daylight Room']}[q.get('pal')||'A'];
+const r=document.documentElement.style;r.setProperty('--bg',P[0]);r.setProperty('--ink',P[1]);r.setProperty('--acc1',P[2]);r.setProperty('--acc2',P[3]);
+document.getElementById('frame').src=q.get('img');document.getElementById('fr').textContent=q.get('label')||'';
+document.getElementById('tag').textContent='Palette '+(q.get('pal')||'A')+' · '+P[4]+' · SAMPLE mock';
+const ang={in:-60,hold:0,out:60}[q.get('phase')]||0;document.getElementById('needle').setAttribute('transform','rotate('+ang+' 120 120)');
+</script></body></html>
